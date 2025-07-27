@@ -1,0 +1,65 @@
+# Compilação
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+*.app
+
+# Arquivos temporários
+*.log
+*.tmp
+*.temp
+
+# Diretórios de build
+/build/
+/bin/
+/debug/
+/release/
+
+# Arquivos do CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Arquivos do Visual Studio
+*.vcxproj*
+*.vcproj*
+*.sln
+*.suo
+*.user
+*.ipch/
+*.aps
+*.ncb
+*.opensdf
+*.tlog/
+*.lastbuildstate
+
+# Arquivos do Qt Creator
+*.pro.user
+*.moc
+*.qrc
+*.obj
+*.qmake.stash
+
+# Arquivos do CLion
+.idea/
+*.iml
+
+# Arquivos do Xcode
+*.xcworkspace/
+*.xcuserdata/
+*.xcodeproj/
+*.xcuserstate
+
+# MacOS
+.DS_Store
+
+# Linux
+*~
+
+# Outros
+tags
