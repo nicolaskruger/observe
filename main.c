@@ -2,6 +2,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct screen_size {
+  int width;
+  int height;
+};
+
+struct screen_size get_screen_size() {
+  Display *d = XOpenDisplay(NULL);
+  Screen *s = DefaultScreenOfDisplay(d);
+  struct screen_size size;
+
+  size.width = s->width;
+  size.height = s->height;
+
+  XCloseDisplay(d);
+
+  return size;
+}
+
 int main(int argc, char *argv[]) {
 
   const char *display = getenv("DISPLAY");
@@ -11,14 +29,12 @@ int main(int argc, char *argv[]) {
 
   char cmd[512];
 
-  Display *d = XOpenDisplay(NULL);
-  Screen *s = DefaultScreenOfDisplay(d);
-  int w = s->width;
-  int h = s->height;
+  struct screen_size screen_size = get_screen_size();
 
   const char *display_size_temp = "%dx%d";
   char display_size[128];
-  snprintf(display_size, sizeof(display_size), display_size_temp, w, h);
+  snprintf(display_size, sizeof(display_size), display_size_temp,
+           screen_size.width, screen_size.height);
 
   snprintf(cmd, sizeof(cmd), cmd_temp, display_size, display);
 
