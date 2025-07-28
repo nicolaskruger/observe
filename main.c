@@ -30,8 +30,8 @@ char *cmd_gen(struct cmd_opt _cmd) {
 
   const int buffer_size = 512;
 
-  const char *cmd_temp =
-      "ffmpeg -video_size %s -framerate 25 -f x11grab -i %s .mkv";
+  const char *cmd_temp = "ffmpeg -video_size %s -framerate 25 -f x11grab -i %s "
+                         "-f pulse -i default .mkv";
 
   char *cmd = malloc(buffer_size);
 
@@ -56,12 +56,8 @@ int main(int argc, char *argv[]) {
   char *cmd = cmd_gen(_cmd_opt);
 
   printf("%s", cmd);
-
-  // const char *cmd =
-  //     "ffmpeg -video_size 1366x768 -framerate 25 -f x11grab -i :1 .mkv";
-  // system(cmd);
-  // printf("record");
-
+  system(cmd);
   free(cmd);
+
   return 0;
 }
